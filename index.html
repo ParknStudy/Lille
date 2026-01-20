@@ -2,257 +2,450 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Park & Study Lille</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park & Study Lille - Parking Étudiant Simplifié</title>
     <style>
-        /* BODY + FOND */
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-
-            /* IMAGE DE FOND PRINCIPALE */
-            background-image: url('images/imagebackground.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
+            background: #ffffff;
         }
 
-        .container {
-            max-width: 900px;
-            margin: auto;
-            padding: 20px;
+        /* HEADER */
+        header {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
         }
 
-        h1, h2 {
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
             color: #0077cc;
+            text-decoration: none;
         }
 
-        /* HEADER LOGO */
-        .header {
-            width: 100%;
-            text-align: center;
-            margin: 30px 0;
-        }
-
-        .header img {
+        .logo img {
             max-width: 220px;
-            width: 100%;
             height: auto;
+            display: block;
         }
 
         /* HERO SECTION */
         .hero {
-            position: relative;
-            background-image: url('images/photo2.jpg');
+            background: linear-gradient(rgba(0, 119, 204, 0.9), rgba(0, 90, 163, 0.9)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/></svg>');
             background-size: cover;
             background-position: center;
-            border-radius: 12px;
-            color: #000;
+            color: white;
+            padding: 8rem 2rem;
+            text-align: center;
         }
 
-        .hero-overlay {
-            background-color: rgba(255, 255, 255, 0.75);
-            padding: 40px;
-            border-radius: 12px;
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #0077cc;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #0077cc;
+        }
+
+        /* STATS SECTION */
+        .stats-section {
+            background: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .places-number {
+            font-size: 5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 1rem 0;
+        }
+
+        .stats-label {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        /* HOW IT WORKS */
+        .how-it-works {
+            padding: 6rem 2rem;
+            background: linear-gradient(to bottom, white, #f8f9fa);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0077cc;
+        }
+
+        .how-it-works-bg-blue {
+            background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);
+        }
+
+        .how-it-works-bg-blue .section-title {
+            color: white;
+        }
+
+        .steps {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            text-align: center;
+        }
+
+        .step:hover {
+            transform: translateY(-10px);
+        }
+
+        .step-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .step h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #0077cc;
+        }
+
+        .step p {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        /* INFO BOX */
+        .info-box {
+            max-width: 1000px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0077cc15, #005fa315);
+            border-left: 5px solid #0077cc;
+            border-radius: 10px;
         }
 
         /* SECTIONS */
-        section {
-            margin: 40px 0;
-            padding: 25px;
-            background-color: rgba(255, 255, 255, 0.85);
-            border-radius: 12px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        .content-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
         }
 
-        /* BOUTONS */
-        .button-container {
+        .content-section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #0077cc;
+        }
+
+        .content-section-blue {
+            background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);
+            color: white;
+        }
+
+        .content-section-blue h2 {
+            color: white;
+        }
+
+        .content-section-blue p,
+        .content-section-blue li {
+            color: white;
+        }
+
+        .content-section-blue ul {
+            color: white;
+        }
+
+        .content-section ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        .content-section li {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);
+            color: white;
+            padding: 5rem 2rem;
             text-align: center;
-            margin-top: 20px;
         }
 
-        a.button {
-            display: inline-block;
-            padding: 12px 22px;
-            margin: 0 10px 10px 0;
-            background-color: #0077cc;
-            color: #fff;
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section a {
+            color: white;
+            font-size: 1.3rem;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: 0.5rem 1rem;
+            border: 2px solid white;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
         }
 
-        a.button:hover {
-            background-color: #005fa3;
+        .contact-section a:hover {
+            background: white;
+            color: #0077cc;
         }
 
-        /* FORMULAIRES */
-        form input, form textarea {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
-            padding: 10px;
-            border-radius: 6px;
-            border: 1px solid #ccc;
-        }
-
-        form input[type="submit"] {
-            background-color: #0077cc;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
+        /* FOOTER */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 2rem;
+            text-align: center;
         }
 
         .small-text {
-            font-size: 13px;
+            font-size: 0.9rem;
             opacity: 0.8;
-        }
-
-        /* ICÔNES POUR LES ÉTAPES */
-        .step-icon {
-            font-size: 20px;
-            margin-right: 8px;
+            margin-top: 1rem;
         }
 
         /* RESPONSIVE */
-        @media screen and (max-width: 600px) {
-            .button-container a.button {
-                display: block;
-                margin: 10px 0;
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .places-number {
+                font-size: 4rem;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
             }
         }
-        .info-box {
-    margin-top: 20px;
-    padding: 15px 20px;
-    background-color: rgba(0, 119, 204, 0.08);
-    border-left: 4px solid #0077cc;
-    border-radius: 6px;
-    font-size: 14px;
-}
-        /* SECTION PLACES DISPONIBLES */
-.stats {
-    text-align: center;
-}
-
-.places-number {
-    font-size: 48px;
-    font-weight: bold;
-    color: #0077cc;
-    margin: 10px 0;
-}
-
-
     </style>
 </head>
 <body>
 
-<div class="container">
-
-    <!-- HEADER LOGO -->
-    <div class="header">
-        <img src="images/logo.png" alt="Logo Park & Study Lille">
-    </div>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Park & Study Lille">
+            </a>
+        </div>
+    </header>
 
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-overlay">
+        <div class="hero-content">
             <h1>Parking étudiant lillois simplifié !</h1>
             <p>
                 Trouvez des places de parking près de votre campus ou logement sans forcer. 
                 Park & Study Lille met en relation des étudiants lillois et des détenteurs de places disponibles.
             </p>
-
-            <div class="button-container">
-<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdNUCUf9kSykJzJHrgNkUMV6t62Jidh9nCawT0BLn1gWHbBRw/viewform?usp=header" target="_blank" rel="noopener">
-    Je veux trouver une place
-</a>
-
-<a class="button" href="https://docs.google.com/forms/d/e/1FAIpQLSdwwheYU6WqufBUQG4nZl6dsmkVUUYzXNxNsom2LtdxxB0yNQ/viewform?usp=publish-editor" target="_blank" rel="noopener">
-    Je propose ma place gratuitement
-</a>
-
+            <div class="cta-buttons">
+                <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdNUCUf9kSykJzJHrgNkUMV6t62Jidh9nCawT0BLn1gWHbBRw/viewform?usp=header" target="_blank" rel="noopener">
+                    Je veux trouver une place
+                </a>
+                <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSdwwheYU6WqufBUQG4nZl6dsmkVUUYzXNxNsom2LtdxxB0yNQ/viewform?usp=publish-editor" target="_blank" rel="noopener">
+                    Je propose ma place gratuitement
+                </a>
             </div>
-
             <p class="small-text">
                 *En cliquant sur un des boutons ci-dessus, vous serez redirigé vers un formulaire sécurisé.
             </p>
         </div>
     </section>
-    <!-- PLACES DISPONIBLES -->
-<section class="stats">
-    <h2>Places disponibles actuellement</h2>
-    <p class="places-number">19</p>
-    <p class="small-text">
-        Données mises à jour régulièrement selon les disponibilités.
-    </p>
-</section>
 
+    <!-- STATS -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <p class="stats-label">Places disponibles actuellement</p>
+            <div class="places-number">19</div>
+            <p class="small-text">Données mises à jour régulièrement selon les disponibilités.</p>
+        </div>
+    </section>
 
-    <!-- COMMENT CA MARCHE -->
-    <section>
-    <h2>Comment ça marche ?</h2>
-    <ol>
-        <li><span class="step-icon">📄</span>Tu remplis le formulaire qui te correspond</li>
-        <li><span class="step-icon">📲</span>Nous croisons les demandes pour mettre en relation un propriétaire avec un locataire dont les critères (localisation, durée, budget) correspondent parfaitement..</li>
-        <li><span class="step-icon">🔑</span>Vous gérez la location directement entre vous</li>
-    </ol>
-
-    <div class="info-box">
-        Park & Study Lille est un service de mise en relation.
-        La mise en relation est payante uniquement lorsqu’une place correspondant à vos critères est trouvée.
-    </div>
-</section>
-
-
-    <!-- CONTACT -->
-    <section>
-        <h2>Contactez-nous</h2>
-        <p>
-            Pour toute question relative à notre service, contactez-nous à l'adresse mail suivante :
-            <a href="mailto:parkandstudylille@gmail.com">parkandstudylille@gmail.com</a>
-        </p>
+    <!-- HOW IT WORKS -->
+    <section class="how-it-works">
+        <h2 class="section-title">Comment ça marche ?</h2>
+        <div class="steps">
+            <div class="step">
+                <span class="step-icon">📄</span>
+                <h3>Étape 1</h3>
+                <p>Tu remplis le formulaire qui te correspond</p>
+            </div>
+            <div class="step">
+                <span class="step-icon">📲</span>
+                <h3>Étape 2</h3>
+                <p>Nous croisons les demandes pour mettre en relation un propriétaire avec un locataire dont les critères (localisation, durée, budget) correspondent parfaitement</p>
+            </div>
+            <div class="step">
+                <span class="step-icon">🔑</span>
+                <h3>Étape 3</h3>
+                <p>Vous gérez la location directement entre vous</p>
+            </div>
+        </div>
+        <div class="info-box">
+            <strong>Park & Study Lille est un service de mise en relation.</strong><br>
+            La mise en relation est payante uniquement lorsqu'une place correspondant à vos critères est trouvée.
+        </div>
     </section>
 
     <!-- MENTIONS LEGALES -->
-    <section>
+    <section class="content-section content-section-blue" style="background: linear-gradient(135deg, #0077cc 0%, #005fa3 100%);">
         <h2>Mentions légales et responsabilité</h2>
         <p>
-            Nous agissons uniquement en tant qu’intermédiaire de mise en relation entre
+            Nous agissons uniquement en tant qu'intermédiaire de mise en relation entre
             propriétaires et locataires.
         </p>
-        <p>Nous ne vérifions pas :</p>
+        <p><strong>Nous ne vérifions pas :</strong></p>
         <ul>
-            <li>L’autorisation de sous-location</li>
+            <li>L'autorisation de sous-location</li>
             <li>Les contrats entre les parties</li>
             <li>Les paiements effectués entre les utilisateurs</li>
         </ul>
-        <p>
+        <p style="margin-top: 1rem;">
             Nous ne pouvons pas être tenus responsables des litiges, retards ou problèmes
             liés aux locations, ni des pertes financières éventuelles.
         </p>
     </section>
 
     <!-- PROTECTION DONNEES -->
-    <section>
+    <section class="content-section content-section-blue" style="background: linear-gradient(135deg, #005fa3 0%, #003d7a 100%);">
         <h2>Protection de vos données personnelles</h2>
-        <p>Nous collectons certaines informations pour vous mettre en relation :</p>
+        <p><strong>Nous collectons certaines informations pour vous mettre en relation :</strong></p>
         <ul>
             <li>Nom et prénom</li>
             <li>Numéro de téléphone</li>
             <li>Adresse e-mail</li>
             <li>Localisation</li>
         </ul>
-        <p>
+        <p style="margin-top: 1rem;">
             Ces informations sont strictement utilisées pour faciliter la mise en relation
             et ne sont jamais revendues à des tiers.
         </p>
     </section>
 
-</div>
+    <!-- CONTACT -->
+    <section class="contact-section" style="background: linear-gradient(135deg, #003d7a 0%, #001f3d 100%);">
+        <h2>Contactez-nous</h2>
+        <p>
+            Pour toute question relative à notre service
+        </p>
+        <a href="mailto:parkandstudylille@gmail.com">parkandstudylille@gmail.com</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="background: linear-gradient(135deg, #001f3d 0%, #000000 100%);">
+        <p>&copy; 2025 Park & Study Lille - Tous droits réservés</p>
+    </footer>
+
 </body>
 </html>
-
